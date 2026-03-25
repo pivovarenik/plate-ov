@@ -1,0 +1,18 @@
+-- Create products table
+CREATE TABLE IF NOT EXISTS products (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+    description VARCHAR(500),
+    sku VARCHAR(255) NOT NULL UNIQUE,
+    price DECIMAL(19,2) NOT NULL,
+    stock INT DEFAULT 0,
+    category VARCHAR(255) NOT NULL,
+    unit VARCHAR(50),
+    status VARCHAR(20) DEFAULT 'ACTIVE',
+    active BOOLEAN NOT NULL DEFAULT TRUE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    notes VARCHAR(500),
+    INDEX idx_sku (sku),
+    INDEX idx_category (category)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
